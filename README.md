@@ -19,9 +19,8 @@ This codebase contains the image processing and the motor control code.
 * need to have a interface to select region for parking slots for given camera angle
 
 
-### rev 3: 
-* setup parkinglot simulation environment 
-* work on line detection for these spots
+### Future: 
+* setup parkinglot simulation env to achieve algorithmic and dynamic line detection 
 
 
 ## NOTES:
@@ -42,8 +41,9 @@ This codebase contains the image processing and the motor control code.
   * downscale all images to `1080 X 1920` pixels
   * for each image define regions of image 
   * slice the images into parking spots based on regions of interest
-  * label data manually based on `y=1 or y=0`
+  * label data manually based on `y=1 (occ) or y=0 (unocc)` or `y=1 (event) or y=0 (nonevent)`
   * save to labelled folders 
+  * what do you 
 * Method 1: build classifier using summary stats method for each parking spot
   * prep the dataset: 
     * grayscale the image
@@ -57,3 +57,4 @@ This codebase contains the image processing and the motor control code.
     * split our dataset into test/train
     * train our classifier and score it using train 
     * evaluate the performance and take discussion from here 
+* Method 1: build classifier using summary stats method for each parking spot

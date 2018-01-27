@@ -37,13 +37,13 @@ This codebase contains the image processing and the motor control code.
 
 ### Current Activity:
 
-* prep the dataset
+* Build dataset prep P.L.
   * downscale all images to `1080 X 1920` pixels
   * for each image define regions of image 
   * slice the images into parking spots based on regions of interest
   * label data manually based on `y=1 (occ) or y=0 (unocc)` or `y=1 (event) or y=0 (nonevent)`
-  * save to labelled folders 
-  * what do you 
+  * compute summary stats for each parking spot using them as a feature vector 
+  * save data to labelleb folder use later 
 * Method 1: build classifier using summary stats method for each parking spot
   * prep the dataset: 
     * grayscale the image

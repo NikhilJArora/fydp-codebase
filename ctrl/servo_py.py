@@ -7,7 +7,7 @@ NOTE: Port on linux: /dev/ttyS0
 """
 class ServoCtrl(object):
     """docstring for ServoCtrl."""
-    def __init__(self, port = '/dev/tty.usbmodem1421'):
+    def __init__(self, port = '/dev/ttyACM0'):
         self.port = port
         self.ser = serial.Serial(port)
         self.ser.baudrate = 9600
@@ -22,7 +22,20 @@ class ServoCtrl(object):
 # Example usage:
 Servo = ServoCtrl()
 
+Servo.write(135)
+Servo.write(35)
+Servo.write(90)
+Servo.write(65)
+Servo.write(45)
 Servo.write(45)
 Servo.write(90)
+Servo.write(45)
+
+Servo.write(135)
+Servo.write(35)
+Servo.write(90)
+Servo.write(65)
+Servo.write(45)
+Servo.write(45)
 Servo.write(90)
 Servo.write(45)

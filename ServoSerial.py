@@ -5,8 +5,8 @@ from time import sleep
 NOTE: Port on mac: /dev/tty.usbmodem1421
 NOTE: Port on linux: /dev/ttyS0
 """
-class ServoCtrl(object):
-    """docstring for ServoCtrl."""
+class ServoSerial(object):
+    """docstring for ServoSerial."""
     def __init__(self, port = '/dev/ttyACM0'):
         self.port = port
         self.ser = serial.Serial(port)
@@ -20,22 +20,24 @@ class ServoCtrl(object):
 
 
 # Example usage:
-Servo = ServoCtrl()
+if __name__ == '__main__':
 
-Servo.write(135)
-Servo.write(35)
-Servo.write(90)
-Servo.write(65)
-Servo.write(45)
-Servo.write(45)
-Servo.write(90)
-Servo.write(45)
+    Servo = ServoSerial()
 
-Servo.write(135)
-Servo.write(35)
-Servo.write(90)
-Servo.write(65)
-Servo.write(45)
-Servo.write(45)
-Servo.write(90)
-Servo.write(45)
+    Servo.write(135)
+    Servo.write(25)
+    Servo.write(90)
+    Servo.write(65)
+    Servo.write(45)
+    Servo.write(90)
+    Servo.write(90)
+    Servo.write(45)
+
+    Servo.write(135)
+    Servo.write(25)
+    Servo.write(90)
+    Servo.write(65)
+    Servo.write(45)
+    Servo.write(90)
+    Servo.write(90)
+    Servo.write(45)

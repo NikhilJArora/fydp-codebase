@@ -4,6 +4,7 @@ Run pre-build model on new observations
 """
 import os
 import pickle
+from skimage import (color, feature)
 from sklearn import model_selection
 from sklearn import svm
 from sklearn.metrics import classification_report,accuracy_score
@@ -34,3 +35,13 @@ y = np.asarray(y)
 loaded_model = pickle.load(open(modeloutf, 'rb'))
 result = loaded_model.score(X, y)
 print(result)
+
+# new image processing
+
+def pre_proc_img(im):
+    """Takes new image and applies """
+    gray = color.rgb2gray(im)
+    gray_rs = resize(gray, (100, 200), mode='constant')
+    H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(10, 10),\
+            cells_per_block=(2, 2), transform_sqrt=True, block_norm='L2-Hys')
+    return H

@@ -46,7 +46,7 @@ lbls = []
 for im in car_imgs:
     gray = color.rgb2gray(im)
     # NOTE: might need to do the whole contour thing, can see later...
-    gray_rs = resize(gray, (200, 100), mode='constant')
+    gray_rs = resize(gray, (100, 200), mode='constant')
 
     H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(10, 10),\
             cells_per_block=(2, 2), transform_sqrt=True, block_norm='L2-Hys')

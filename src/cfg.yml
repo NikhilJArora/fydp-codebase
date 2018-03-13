@@ -1,0 +1,17 @@
+Camera:
+ - TODO
+
+Classifier:
+ - ../models/finalized_model.p
+
+ViewSet:
+  views:
+    - view_id: 1
+      theta: 45
+      phi: 45
+      ps_set:
+        - ps_id: 123
+        - x_start: 20
+        - x_end: 200
+        - y_start: 20
+        - y_end: 200

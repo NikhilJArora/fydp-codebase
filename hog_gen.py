@@ -27,16 +27,23 @@ from skimage.transform import resize
 
 dataset_path = '/Users/nikhilarora/data/fydp/dataset'
 car_b_path = '/Users/nikhilarora/data/fydp/dataset/car'
+car_b_path2 = '/Users/nikhilarora/data/fydp/dataset/car2'
 ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar'
+ncar_b_path2 = '/Users/nikhilarora/data/fydp/dataset/ncar2'
 
 # list all files in dir for car
 
 carfiles = [f for f in listdir(car_b_path) if isfile(join(car_b_path, f))]
+carfiles2 = [f for f in listdir(car_b_path2) if isfile(join(car_b_path2, f))]
+
 ncarfiles = [f for f in listdir(ncar_b_path) if isfile(join(ncar_b_path, f))]
+ncarfiles2 = [f for f in listdir(ncar_b_path2) if isfile(join(ncar_b_path2, f))]
 
 # read files into image list:
 car_imgs = [io.imread(join(car_b_path, f)) for f in carfiles]
+car_imgs += [io.imread(join(car_b_path2, f)) for f in carfiles2]
 ncar_imgs = [io.imread(join(ncar_b_path, f)) for f in ncarfiles]
+ncar_imgs += [io.imread(join(ncar_b_path2, f)) for f in ncarfiles2]
 
 # define container to store hog feature vect and label
 feature_vs = []
@@ -65,5 +72,5 @@ for im in ncar_imgs:
     feature_vs.append(H)
     lbls.append(cl)
 
-pickle.dump(feature_vs, open(join(dataset_path, 'features.p'), 'wb'))
-pickle.dump(lbls, open(join(dataset_path, 'lbls.p'), 'wb'))
+pickle.dump(feature_vs, open(join(dataset_path, 'features_v2.p'), 'wb'))
+pickle.dump(lbls, open(join(dataset_path, 'lbls_v2.p'), 'wb'))

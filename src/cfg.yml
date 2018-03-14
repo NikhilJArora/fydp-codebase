@@ -2,7 +2,7 @@ Camera:
  im_base_path: /home/pi/dev/media/
 
 Classifier:
- serial_path: /home/pi/dev/media/finalized_model.p
+ serial_path: /home/pi/dev/media/finalized_model_v2.p
 
 ViewSet:
   views:

@@ -27,7 +27,7 @@ class Classifier(object):
 
     def predict(self, feat_vect):
         """returns prediction based on current model"""
-        pred_val = self.model.predict(X_test)
+        pred_val = self.model.predict(feat_vect)
         if type(pred_val) == list:
             return bool(pred_val[0])
         else:

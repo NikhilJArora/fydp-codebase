@@ -22,7 +22,6 @@ ViewSet:
 
 """
 import os
-import pandas as pd
 
 from cfg import Cfg
 from camera import Camera
@@ -52,4 +51,8 @@ def main():
 
         print("The current state:")
         curr_views_dict = ViewSet.get_set_state()
-        print(pd.DataFrame(curr_views_dict))
+        print(curr_views_dict)
+
+
+if __name__ == '__main__':
+    main()

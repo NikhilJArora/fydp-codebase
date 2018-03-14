@@ -19,13 +19,13 @@ import numpy as np
 # consts:
 dataset_path = '/Users/nikhilarora/data/fydp/dataset'
 model_path = '/Users/nikhilarora/data/fydp/models'
-modeloutf = os.path.join(model_path, 'finalized_model.p')
+modeloutf = os.path.join(model_path, 'finalized_model_v2.p')
 
 # read train.p into mem
 #ds_df = pd.read_pickle(os.path.join(dataset_path, 'train.p'))
-with open(os.path.join(dataset_path, 'features.p'), 'rb') as f:
+with open(os.path.join(dataset_path, 'features_v2.p'), 'rb') as f:
     X = pickle.load(f)
-with open(os.path.join(dataset_path, 'lbls.p'), 'rb') as f:
+with open(os.path.join(dataset_path, 'lbls_v2.p'), 'rb') as f:
     y = pickle.load(f)
 
 X = np.asarray(X)

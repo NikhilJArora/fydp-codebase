@@ -23,28 +23,29 @@ class Camera(object):
     def __init__(self, cfg_camera):
         self.cfg_camera = cfg_camera
         self.im_base_path = self.cfg_camera['im_base_path']
-        self.camera = picamera.PiCamera()
+        self.cam = picamera.PiCamera()
         self.servo = ServoSerial()
         self.curr_path = None
 
     def capture(self, arg):
         self.curr_path = self._gen_path()
-        camera.capture(curr_path)
+        self.cam.capture(curr_path)
         return io.imread(self.curr_path)
 
     def _gen_path(self):
         # generate random int
-        rand_int = randint(0, 9999)
+        #rand_int = randint(0, 9999)
         return os.path.join(
             self.im_base_path,
-            rand_int,
+            'curr_view_im',
             '.jpg'
             )
 
     def move(self, theta, phi):
-        """ writes theta and phi to Servo motors via abstracted serial connection """
-        Servo.write(theta)
-        Servo.write(phi)
+        """ writes theta and phi to Servo motors via abstracted serial
+        connection """
+        self.servo.write(theta)
+        self.servo.write(phi)
 
     def get_last_im(self):
         if self.curr_path not None:

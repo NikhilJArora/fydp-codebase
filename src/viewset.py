@@ -26,7 +26,7 @@ class ViewSet(object):
         self._populate_views(self.cfg_viewset)
 
     def _populate_views(self, cfg_viewset):
-        for cfg_view in cfg_viewset.views:
+        for cfg_view in cfg_viewset['views']:
             self.views.append(View(cfg_view, self.classifier))
 
     def get_set_state(self):

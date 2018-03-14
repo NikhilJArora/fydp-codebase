@@ -1,14 +1,23 @@
 Camera:
- - TODO
+ im_base_path: /home/pi/dev/media/
 
 Classifier:
- - ../models/finalized_model.p
+ serial_path: /home/pi/dev/media/finalized_model.p
 
 ViewSet:
   views:
     - view_id: 1
       theta: 45
       phi: 45
+      ps_set:
+        - ps_id: 123
+        - x_start: 20
+        - x_end: 200
+        - y_start: 20
+        - y_end: 200
+    - view_id: 2
+      theta: 90
+      phi: 60
       ps_set:
         - ps_id: 123
         - x_start: 20

@@ -24,16 +24,17 @@ ViewSet:
 import os
 import pandas as pd
 
+from cfg import Cfg
 from camera import Camera
 from classifier import Classifier
-
+from viewset import ViewSet
 
 
 def main():
     # program start
     print("ParkSmart is starting up...")
     loop_count = 0
-    cfg = Cfg('cfg.yml') # TODO: need to build config Class
+    cfg = Cfg()
 
     camera = Camera(cfg.Camera)
     classifier = Classifier(cfg.Classifier)
@@ -45,7 +46,7 @@ def main():
         for view in viewSet.views:
             img_pos = view.get_img_pos()
             camera.move(img_pos[0], img_pos[1])
-            # NOTE: might need to cal a pause to give camera time to move
+            # NOTE: might need to cal a sleep to give camera time to move
             view_img = camera.capture() # TODO:
             view.update(view_img) # TODO:
 

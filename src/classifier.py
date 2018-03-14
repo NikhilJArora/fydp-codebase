@@ -18,7 +18,7 @@ class Classifier(object):
     """
     def __init__(self, cfg_classifier):
         self.cfg_classifier = cfg_classifier
-        self.serial_path = self.cfg_classifier.serial_path
+        self.serial_path = self.cfg_classifier['serial_path']
         self.model = self._init_model()
 
     def _init_model(self):

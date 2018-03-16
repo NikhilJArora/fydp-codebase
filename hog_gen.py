@@ -18,7 +18,7 @@ from os.path import isfile, join
 
 import numpy as np
 from scipy import stats
-import pickle
+import cPickle as pickle
 
 import pandas as pd
 from skimage import (io, feature, color)
@@ -26,25 +26,27 @@ from skimage.transform import resize
 
 
 dataset_path = '/Users/nikhilarora/data/fydp/dataset'
-car_b_path = '/Users/nikhilarora/data/fydp/dataset/car'
-car_b_path2 = '/Users/nikhilarora/data/fydp/dataset/car2'
-ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar'
-ncar_b_path2 = '/Users/nikhilarora/data/fydp/dataset/ncar2'
-
+# car_b_path = '/Users/nikhilarora/data/fydp/dataset/car'
+# car_b_path2 = '/Users/nikhilarora/data/fydp/dataset/car2'
+# ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar'
+# ncar_b_path2 = '/Users/nikhilarora/data/fydp/dataset/ncar2'
+car_b_path = '/Users/nikhilarora/data/fydp/dataset/car_os'
+ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar_os'
 # list all files in dir for car
 
 carfiles = [f for f in listdir(car_b_path) if isfile(join(car_b_path, f))]
-carfiles2 = [f for f in listdir(car_b_path2) if isfile(join(car_b_path2, f))]
+# carfiles2 = [f for f in listdir(car_b_path2) if isfile(join(car_b_path2, f))]
 
 ncarfiles = [f for f in listdir(ncar_b_path) if isfile(join(ncar_b_path, f))]
-ncarfiles2 = [f for f in listdir(ncar_b_path2) if isfile(join(ncar_b_path2, f))]
+# ncarfiles2 = [f for f in listdir(ncar_b_path2) if isfile(join(ncar_b_path2, f))]
 
 # read files into image list:
 car_imgs = [io.imread(join(car_b_path, f)) for f in carfiles]
-car_imgs += [io.imread(join(car_b_path2, f)) for f in carfiles2]
+# car_imgs += [io.imread(join(car_b_path2, f)) for f in carfiles2]
+print('number of cars: ', len(car_imgs))
 ncar_imgs = [io.imread(join(ncar_b_path, f)) for f in ncarfiles]
-ncar_imgs += [io.imread(join(ncar_b_path2, f)) for f in ncarfiles2]
-
+# ncar_imgs += [io.imread(join(ncar_b_path2, f)) for f in ncarfiles2]
+print('number of cars: ', len(ncar_imgs))
 # define container to store hog feature vect and label
 feature_vs = []
 lbls = []
@@ -72,5 +74,5 @@ for im in ncar_imgs:
     feature_vs.append(H)
     lbls.append(cl)
 
-pickle.dump(feature_vs, open(join(dataset_path, 'features_v2.p'), 'wb'))
-pickle.dump(lbls, open(join(dataset_path, 'lbls_v2.p'), 'wb'))
+pickle.dump(feature_vs, open(join(dataset_path, 'features_os.p'), 'wb'))
+pickle.dump(lbls, open(join(dataset_path, 'lbls_os.p'), 'wb'))

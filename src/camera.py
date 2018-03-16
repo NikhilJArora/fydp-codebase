@@ -10,7 +10,7 @@ sudo apt-get install python-picamera
 """
 import os
 import picamera
-import pickle
+import cPickle as pickle
 
 from random import randint
 from skimage import (io)
@@ -27,17 +27,18 @@ class Camera(object):
         self.servo = ServoSerial()
         self.curr_path = None
 
-    def capture(self, arg):
+    def capture(self):
         self.curr_path = self._gen_path()
-        self.cam.capture(curr_path)
+        self.cam.capture(self.curr_path)
         return io.imread(self.curr_path)
 
     def _gen_path(self):
         # generate random int
-        #rand_int = randint(0, 9999)
+        rand_int = randint(0, 9999)
         return os.path.join(
             self.im_base_path,
-            'curr_view_im',
+            'curr_view_im_' + \
+            str(rand_int) + \
             '.jpg'
             )
 
@@ -45,10 +46,12 @@ class Camera(object):
         """ writes theta and phi to Servo motors via abstracted serial
         connection """
         self.servo.write(theta)
+        print("Serial Port: " + str(self.servo.read()))
         self.servo.write(phi)
+        print("Serial Port: " + str(self.servo.read()))
 
     def get_last_im(self):
-        if self.curr_path not None:
+        if self.curr_path is not None:
             return io.imread(self.curr_path)
         else:
             return None

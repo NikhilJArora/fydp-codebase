@@ -21,23 +21,26 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+
   while (Serial.available() > 0) {
     if (input_counter == 0){
+      Serial.print("Current Pan Tilt Angles are:"); 
+      Serial.print(pan_servo.read());
+      Serial.print(", ");
+      Serial.println(tilt_servo.read());
+      Serial.print("Input Pan angle (theta): ");
       pan_ang = Serial.parseInt();
-      input_counter = input_counter + 1; 
-      Serial.print(pan_ang);
-      Serial.println(" degs");
-      Serial.println("now enter tilt angle");
+      pan_servo.write(pan_ang);
+      Serial.println(pan_ang);
+      input_counter = input_counter + 1;
     }
     else if (input_counter == 1){
-      input_counter = 0;
+      Serial.print("Input Tilt angle (phi): ");
       tilt_ang = Serial.parseInt();
-      Serial.print(tilt_ang);
-      Serial.println(" degs");
-
-      pan_servo.write(pan_ang);
       tilt_servo.write(tilt_ang);
-      Serial.print("Please enter next pan and tilt angles");
+      Serial.println(tilt_ang);
+      input_counter = 0;
     }
-  } 
+   
+  }
 }

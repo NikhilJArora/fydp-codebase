@@ -3,6 +3,7 @@ Holds logic related to the classifier that will be used
 in predicting the models occupancy.
 """
 import os
+import cPickle as pickle
 
 class Classifier(object):
     """Classifier class that will hold the model and its actions
@@ -27,7 +28,7 @@ class Classifier(object):
 
     def predict(self, feat_vect):
         """returns prediction based on current model"""
-        pred_val = self.model.predict(feat_vect)
+        pred_val = self.model.predict(feat_vect.reshape(1, -1))
         if type(pred_val) == list:
             return bool(pred_val[0])
         else:

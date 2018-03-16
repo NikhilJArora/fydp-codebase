@@ -1,0 +1,153 @@
+0.947368421053
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 1, True)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, True)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, True)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, True)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, False)
+6156
+('Lbl: ', 0, True)
+6156
+('Lbl: ', 0, False)

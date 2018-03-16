@@ -3,7 +3,7 @@ Run pre-build model on new observations
 
 """
 import os
-import pickle
+import cPickle as pickle
 from skimage import (color, feature)
 from sklearn import model_selection
 from sklearn import svm
@@ -19,7 +19,7 @@ import numpy as np
 # consts:
 dataset_path = '/Users/nikhilarora/data/fydp/dataset'
 model_path = '/Users/nikhilarora/data/fydp/models'
-modeloutf = os.path.join(model_path, 'finalized_model_v2.p')
+modeloutf = os.path.join(model_path, 'finalized_model_v4.p')
 
 # read train.p into mem
 #ds_df = pd.read_pickle(os.path.join(dataset_path, 'train.p'))
@@ -32,9 +32,13 @@ X = np.asarray(X)
 y = np.asarray(y)
 
 # load the model from disk
-loaded_model = pickle.load(open(modeloutf, 'rb'))
-result = loaded_model.score(X, y)
+clf = pickle.load(open(modeloutf, 'rb'))
+result = clf.score(X, y)
 print(result)
+for i, H in enumerate(X):
+    print(len(H))
+    print('Actual: ', bool(y[i]), 'Predicted: ', bool(clf.predict(H.reshape(1, -1))[0]))
+
 
 # new image processing
 

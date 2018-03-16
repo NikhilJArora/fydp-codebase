@@ -38,10 +38,10 @@ class ViewSet(object):
         }
         for view in self.views:
             for ps in view.ps_set:
-                _vs_state['view_id'] = view.view_id
-                _vs_state['id'] = ps.ps_id
-                _vs_state['state'] = ps.state
-                _vs_state['l_update'] = ps.l_update
+                _vs_state['view_id'].append(view.view_id)
+                _vs_state['id'].append(ps.ps_id)
+                _vs_state['state'].append(ps.state)
+                _vs_state['l_update'].append(ps.l_update)
         return _vs_state
 
 
@@ -63,13 +63,13 @@ class View(object):
     def __init__(self, cfg_view, classifier):
         self.cfg_view = cfg_view
         self.view_id = self.cfg_view['view_id']
-        self._img_pos = tuple(self.cfg_view['theta'], self.cfg_view['phi'])
+        self._img_pos = tuple([self.cfg_view['theta'], self.cfg_view['phi']])
         self.classifier = classifier
         self.ps_set = list()
         self._populate_ps_set(self.cfg_view)
 
     def _populate_ps_set(self, cfg_view):
-        for cfg_ps in cfg_view.ps_set:
+        for cfg_ps in cfg_view['ps_set']:
             self.ps_set.append(ParkingSpot(cfg_ps, self.classifier))
 
     def update(self, view_img):
@@ -103,7 +103,7 @@ class ParkingSpot(object):
     """
     def __init__(self, cfg_ps, classifier):
         self.cfg_ps = cfg_ps
-        self.ps_id = self.cfg_ps.ps_id
+        self.ps_id = self.cfg_ps['ps_id']
         self.x_range = None
         self.y_range = None
         self._set_im_ranges()
@@ -112,14 +112,14 @@ class ParkingSpot(object):
         self.classifier = classifier
 
     def _set_im_ranges(self):
-        self.x_range = tuple(
+        self.x_range = tuple([
                 self.cfg_ps['x_start'],
                 self.cfg_ps['x_end']
-        )
-        self.y_range = tuple(
+        ])
+        self.y_range = tuple([
                 self.cfg_ps['y_start'],
                 self.cfg_ps['y_end']
-        )
+        ])
 
     def update(self, view_im):
         r_im = self._slice_img(view_im)
@@ -134,20 +134,22 @@ class ParkingSpot(object):
 
     def _slice_img(self, view_im):
         """ Uses defined ranges to slice view image """
-        return view_im[self.y_start:self.y_end , self.x_start:self.x_end]
+        return view_im[self.y_range[0]:self.y_range[1] ,\
+                        self.x_range[0]:self.x_range[1]]
 
     def _pre_proc_im(self, r_im):
         """ greyscale and downscale im to (x,y):(100,200) """
-        gray = color.rgb2gray(im)
+        gray = color.rgb2gray(r_im)
         return resize(gray, (100, 200), mode='constant')
 
     def _hog_compute(self, im):
         """ Takes pre-proced im and produces the histogram of gradients
         feature """
-        return feature.hog(gray_rs, orientations=9, pixels_per_cell=(10, 10),\
-                cells_per_block=(2, 2), transform_sqrt=True, \
-                block_norm='L2-Hys')
+        return feature.hog(im, orientations=9, pixels_per_cell=(10, 10),\
+                cells_per_block=(2, 2), transform_sqrt=True)
 
+    def _predict(self, H):
+        return self.classifier.predict(H)
 
 def get_time_str():
     return datetime.now().strftime('%Y%m%d %H%M%S')

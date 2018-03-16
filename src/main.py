@@ -22,6 +22,7 @@ ViewSet:
 
 """
 import os
+import pandas as pd
 
 from cfg import Cfg
 from camera import Camera
@@ -37,12 +38,12 @@ def main():
 
     camera = Camera(cfg.Camera)
     classifier = Classifier(cfg.Classifier)
-    viewSet = ViewSet(cfg.ViewSet, classifier)
+    viewset = ViewSet(cfg.ViewSet, classifier)
     print("Now beginning to process the current ViewSet.")
 
     while True:
         print("Views have been processed {} times.".format(str(loop_count)))
-        for view in viewSet.views:
+        for view in viewset.views:
             img_pos = view.get_img_pos()
             camera.move(img_pos[0], img_pos[1])
             # NOTE: might need to cal a sleep to give camera time to move
@@ -50,8 +51,12 @@ def main():
             view.update(view_img) # TODO:
 
         print("The current state:")
-        curr_views_dict = ViewSet.get_set_state()
-        print(curr_views_dict)
+        curr_views_dict = viewset.get_set_state()
+        df = pd.DataFrame(curr_views_dict)
+        df = df[['view_id','id','state','l_update']]
+        df.to_csv('output.csv', index=False)
+        print(df)
+        loop_count += 1
 
 
 if __name__ == '__main__':

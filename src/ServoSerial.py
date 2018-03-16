@@ -17,11 +17,14 @@ class ServoSerial(object):
             self.ser.open()
 
     def write(self, ang):
+        self.ser.write(str(ang).encode())
         sleep(3)
-        print(self.ser.write(str(ang).encode()))
 
-    def close():
+    def close(self):
         self.ser.close()
+
+    def read(self):
+        return self.ser.readline()
 
 # Example usage:
 if __name__ == '__main__':

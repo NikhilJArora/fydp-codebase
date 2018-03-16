@@ -1,26 +1,65 @@
 Camera:
- im_base_path: /home/pi/dev/media/
+ im_base_path: /home/pi/dev/media/imgs/
 
 Classifier:
- serial_path: /home/pi/dev/media/finalized_model_v2.p
+ serial_path: /home/pi/dev/media/finalized_model_v3.p
 
 ViewSet:
   views:
     - view_id: 1
-      theta: 45
+      theta: 40
       phi: 45
       ps_set:
-        - ps_id: 123
-        - x_start: 20
-        - x_end: 200
-        - y_start: 20
-        - y_end: 200
+        - ps_id: 11
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 12
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 13
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
     - view_id: 2
-      theta: 90
-      phi: 60
+      theta: 85
+      phi: 45
       ps_set:
-        - ps_id: 123
-        - x_start: 20
-        - x_end: 200
-        - y_start: 20
-        - y_end: 200
+        - ps_id: 21
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 22
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 23
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+    - view_id: 3
+      theta: 130
+      phi: 45
+      ps_set:
+        - ps_id: 31
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 32
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200
+        - ps_id: 33
+          x_start: 20
+          x_end: 200
+          y_start: 20
+          y_end: 200

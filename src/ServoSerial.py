@@ -15,8 +15,11 @@ class ServoSerial(object):
         self.ser.baudrate = 9600
         if not self.ser.is_open:
             self.ser.open()
+        self.write(90)
+
 
     def write(self, ang):
+        print('ServoSerial: writing angle {}'.format(str(ang)))
         self.ser.write(str(ang).encode())
         sleep(3)
 
@@ -30,21 +33,11 @@ class ServoSerial(object):
 if __name__ == '__main__':
 
     Servo = ServoSerial()
+    Servo.write(90)
 
-    Servo.write(135)
-    Servo.write(25)
-    Servo.write(90)
-    Servo.write(65)
+    sleep(5)
     Servo.write(45)
-    Servo.write(90)
-    Servo.write(90)
-    Servo.write(45)
-
-    Servo.write(135)
-    Servo.write(25)
-    Servo.write(90)
-    Servo.write(65)
-    Servo.write(45)
-    Servo.write(90)
-    Servo.write(90)
-    Servo.write(45)
+    sleep(5)
+    Servo.write(110)
+    sleep(5)
+    Servo.write(60)

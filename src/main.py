@@ -45,9 +45,10 @@ def main():
         print("Views have been processed {} times.".format(str(loop_count)))
         for view in viewset.views:
             img_pos = view.get_img_pos()
+            print(img_pos)
             camera.move(img_pos[0], img_pos[1])
             # NOTE: might need to cal a sleep to give camera time to move
-            view_img = camera.capture() # TODO:
+            view_img = camera.capture()
             view.update(view_img) # TODO:
 
         print("The current state:")

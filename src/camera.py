@@ -46,10 +46,12 @@ class Camera(object):
     def move(self, theta, phi):
         """ writes theta and phi to Servo motors via abstracted serial
         connection """
+        print('Writing the theta angle: {}'.format(str(theta)))
         self.servo.write(theta)
-        print("Serial Port: " + str(self.servo.read()))
+        #print("Serial Port: " + str(self.servo.read()))
+        print('Writing the theta angle: {}'.format(str(phi)))
         self.servo.write(phi)
-        print("Serial Port: " + str(self.servo.read()))
+        #print("Serial Port: " + str(self.servo.read()))
 
     def get_last_im(self):
         if self.curr_path is not None:

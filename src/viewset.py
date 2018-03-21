@@ -154,4 +154,5 @@ class ParkingSpot(object):
         return self.classifier.predict(H)
 
 def get_time_str():
-    return datetime.now().strftime('%Y%m%d %H%M%S')
+    # datetime.now().strftime('%Y%m%d %H%M%S')
+    return datetime.now().strftime('%H:%M:%S')

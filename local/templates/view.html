@@ -1,10 +1,17 @@
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <!doctype html>
-<title>Simple tables</title>
+<title>ParkSmart</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
+<div id="wrapper" class="page">
   <h1>Smart Park Data Display</h1>
-  {% for table in tables %}
-    <h2>{{titles[loop.index]}}</h2>
-    {{ table|safe }}
-  {% endfor %}
+  <div id="content">
+    {{  table }}
+      <h2>{{ title }}</h2>
+      {{ table|safe }}
+  </div>
 </div>
+<script>
+setInterval(function(){ // load the data from your endpoint into the div
+    $("#content").load("/poll_stats")
+},1000)
+</script>

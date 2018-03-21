@@ -25,13 +25,13 @@ from skimage import (io, feature, color)
 from skimage.transform import resize
 
 
-dataset_path = '/Users/nikhilarora/data/fydp/dataset'
+dataset_path = '/Users/nikhilarora/data/fydp/dataset/scaled/'
 # car_b_path = '/Users/nikhilarora/data/fydp/dataset/car'
 # car_b_path2 = '/Users/nikhilarora/data/fydp/dataset/car2'
 # ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar'
 # ncar_b_path2 = '/Users/nikhilarora/data/fydp/dataset/ncar2'
-car_b_path = '/Users/nikhilarora/data/fydp/dataset/car_os'
-ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/ncar_os'
+car_b_path = '/Users/nikhilarora/data/fydp/dataset/scaled/car'
+ncar_b_path = '/Users/nikhilarora/data/fydp/dataset/scaled/ncar'
 # list all files in dir for car
 
 carfiles = [f for f in listdir(car_b_path) if isfile(join(car_b_path, f))]
@@ -46,7 +46,7 @@ car_imgs = [io.imread(join(car_b_path, f)) for f in carfiles]
 print('number of cars: ', len(car_imgs))
 ncar_imgs = [io.imread(join(ncar_b_path, f)) for f in ncarfiles]
 # ncar_imgs += [io.imread(join(ncar_b_path2, f)) for f in ncarfiles2]
-print('number of cars: ', len(ncar_imgs))
+print('number of non-cars: ', len(ncar_imgs))
 # define container to store hog feature vect and label
 feature_vs = []
 lbls = []
@@ -55,10 +55,10 @@ lbls = []
 for im in car_imgs:
     gray = color.rgb2gray(im)
     # NOTE: might need to do the whole contour thing, can see later...
-    gray_rs = resize(gray, (100, 200), mode='constant')
+    gray_rs = resize(gray, (50, 50), mode='constant')
 
-    H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(10, 10),\
-            cells_per_block=(2, 2), transform_sqrt=True, block_norm='L2-Hys')
+    H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(8, 8),\
+            cells_per_block=(2, 2), transform_sqrt=True)
     cl = 1
     feature_vs.append(H)
     lbls.append(cl)
@@ -67,9 +67,9 @@ for im in car_imgs:
 for im in ncar_imgs:
     gray = color.rgb2gray(im)
     # NOTE: might need to do the whole contour thing, can see later...
-    gray_rs = resize(gray, (100, 200), mode='constant')
-    H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(10, 10),\
-            cells_per_block=(2, 2), transform_sqrt=True, block_norm='L2-Hys')
+    gray_rs = resize(gray, (50, 50), mode='constant')
+    H = feature.hog(gray_rs, orientations=9, pixels_per_cell=(8, 8),\
+            cells_per_block=(2, 2), transform_sqrt=True)
     cl = 0
     feature_vs.append(H)
     lbls.append(cl)

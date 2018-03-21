@@ -13,7 +13,7 @@ import picamera
 import cPickle as pickle
 
 from random import randint
-from skimage import (io)
+from skimage import (io, transform)
 
 from ServoSerial import ServoSerial
 
@@ -30,7 +30,8 @@ class Camera(object):
     def capture(self):
         self.curr_path = self._gen_path()
         self.cam.capture(self.curr_path)
-        return io.imread(self.curr_path)
+        print("Image capture complete!")
+        return transform.rotate(io.imread(self.curr_path), 180)
 
     def _gen_path(self):
         # generate random int

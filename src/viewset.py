@@ -140,13 +140,15 @@ class ParkingSpot(object):
     def _pre_proc_im(self, r_im):
         """ greyscale and downscale im to (x,y):(100,200) """
         gray = color.rgb2gray(r_im)
-        return resize(gray, (100, 200), mode='constant')
+        gray_rs = resize(gray, (50, 50), mode='constant')
+        return gray_rs
 
     def _hog_compute(self, im):
         """ Takes pre-proced im and produces the histogram of gradients
         feature """
-        return feature.hog(im, orientations=9, pixels_per_cell=(10, 10),\
+        H = feature.hog(im, orientations=9, pixels_per_cell=(8, 8),\
                 cells_per_block=(2, 2), transform_sqrt=True)
+        return H
 
     def _predict(self, H):
         return self.classifier.predict(H)
